@@ -1,0 +1,57 @@
+﻿{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "C: build active file (gcc)",
+            "type": "cppbuild",
+            "command": "D:\\VS code\\mingw64\\bin\\gcc.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "-Wall",
+                "-Wextra",
+                "-std=c17",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": false,
+                "reveal": "always",
+                "panel": "shared",
+                "clear": true
+            },
+            "detail": "Build the active C file with MinGW GCC."
+        },
+        {
+            "label": "C: run active file",
+            "type": "process",
+            "command": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "dependsOn": "C: build active file (gcc)",
+            "problemMatcher": [],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": false,
+                "reveal": "always",
+                "panel": "shared",
+                "clear": true
+            }
+        }
+    ]
+}
